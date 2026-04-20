@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -29,16 +30,59 @@
 
   --font-display: 'Syne', sans-serif;
   --font-body: 'DM Sans', sans-serif;
+  --font-icons: 'Material Symbols Rounded';
 
   --radius-sm: 12px;
   --radius-md: 18px;
   --radius-lg: 24px;
   --radius-xl: 32px;
+
+  /* Icon defaults */
+  --icon-fill: 1;
+  --icon-wght: 300;
+  --icon-grad: 0;
+  --icon-opsz: 24;
 }
 
-html {
-  scroll-behavior: smooth;
+/* Material Symbols utility class */
+.icon {
+  font-family: var(--font-icons);
+  font-weight: normal;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  user-select: none;
+  -webkit-font-feature-settings: 'liga';
+  font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+  font-variation-settings:
+    'FILL' var(--icon-fill),
+    'wght' var(--icon-wght),
+    'GRAD' var(--icon-grad),
+    'opsz' var(--icon-opsz);
 }
+
+/* Size variants */
+.icon-sm  { font-size: 16px; }
+.icon-md  { font-size: 20px; }
+.icon-lg  { font-size: 24px; }
+.icon-xl  { font-size: 32px; }
+.icon-2xl { font-size: 48px; }
+
+/* Style variants */
+.icon-outline { --icon-fill: 0; --icon-wght: 300; }
+.icon-filled  { --icon-fill: 1; --icon-wght: 400; }
+.icon-bold    { --icon-fill: 1; --icon-wght: 600; }
+
+html { scroll-behavior: smooth; }
 
 body {
   font-family: var(--font-body);
@@ -60,12 +104,8 @@ body::before {
   z-index: 0;
 }
 
-#root {
-  position: relative;
-  z-index: 1;
-}
+#root { position: relative; z-index: 1; }
 
-/* Liquid Glass utility */
 .glass {
   background: var(--glass-bg);
   backdrop-filter: blur(24px) saturate(180%);
@@ -99,17 +139,6 @@ body::before {
     0 4px 16px rgba(21, 101, 192, 0.3);
 }
 
-button {
-  cursor: pointer;
-  font-family: var(--font-body);
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-img {
-  display: block;
-  max-width: 100%;
-}
+button { cursor: pointer; font-family: var(--font-body); }
+a { text-decoration: none; color: inherit; }
+img { display: block; max-width: 100%; }

@@ -1,3 +1,5 @@
+import Icon from './Icon';
+
 export default function Hero({ onNavigate }) {
   return (
     <section style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '7rem 1.5rem 4rem', position: 'relative', overflow: 'hidden' }}>
@@ -9,7 +11,7 @@ export default function Hero({ onNavigate }) {
           {/* Texto */}
           <div>
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.4rem 1rem', borderRadius: '50px', background: 'rgba(21,101,192,0.2)', border: '1px solid rgba(66,165,245,0.25)', marginBottom: '1.5rem', fontSize: '0.78rem', color: 'var(--blue-200)', fontWeight: 500, letterSpacing: '0.05em', textTransform: 'uppercase' }}>
-              <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#42a5f5', display: 'inline-block', animation: 'pulse 2s infinite' }} />
+              <Icon name="verified" size={14} fill={1} weight={500} color="#42a5f5" />
               Software gratuito y premium
             </div>
 
@@ -26,23 +28,33 @@ export default function Hero({ onNavigate }) {
             </p>
 
             <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
-              <button onClick={() => onNavigate('catalog')} style={{ padding: '0.85rem 1.75rem', borderRadius: '14px', border: 'none', background: 'linear-gradient(135deg,#1565c0,#1e88e5)', color: 'white', fontFamily: 'var(--font-body)', fontWeight: 600, fontSize: '0.95rem', cursor: 'pointer', boxShadow: '0 8px 24px rgba(21,101,192,0.4)', transition: 'transform 0.2s' }}
+              <button onClick={() => onNavigate('catalog')} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.85rem 1.75rem', borderRadius: '14px', border: 'none', background: 'linear-gradient(135deg,#1565c0,#1e88e5)', color: 'white', fontFamily: 'var(--font-body)', fontWeight: 600, fontSize: '0.95rem', cursor: 'pointer', boxShadow: '0 8px 24px rgba(21,101,192,0.4)', transition: 'transform 0.2s' }}
                 onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-2px)'}
                 onMouseLeave={e => e.currentTarget.style.transform = 'translateY(0)'}>
+                <Icon name="apps" size={18} fill={1} weight={400} />
                 Ver catálogo
               </button>
-              <button onClick={() => onNavigate('free')} style={{ padding: '0.85rem 1.75rem', borderRadius: '14px', border: '1px solid rgba(102,187,106,0.35)', background: 'rgba(102,187,106,0.08)', color: '#a5d6a7', fontFamily: 'var(--font-body)', fontWeight: 500, fontSize: '0.95rem', cursor: 'pointer', transition: 'all 0.2s' }}
+              <button onClick={() => onNavigate('free')} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.85rem 1.75rem', borderRadius: '14px', border: '1px solid rgba(102,187,106,0.35)', background: 'rgba(102,187,106,0.08)', color: '#a5d6a7', fontFamily: 'var(--font-body)', fontWeight: 500, fontSize: '0.95rem', cursor: 'pointer', transition: 'all 0.2s' }}
                 onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(102,187,106,0.6)'; e.currentTarget.style.background = 'rgba(102,187,106,0.15)'; }}
                 onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(102,187,106,0.35)'; e.currentTarget.style.background = 'rgba(102,187,106,0.08)'; }}>
-                ✅ Solo gratis
+                <Icon name="featured_play_list" size={18} fill={0} weight={300} color="#a5d6a7" />
+                Solo gratis
               </button>
             </div>
 
+            {/* Stats */}
             <div style={{ display: 'flex', gap: '2rem', marginTop: '2.5rem', flexWrap: 'wrap' }}>
-              {[['8+', 'Programas'], ['100%', 'Con instrucciones'], ['Gratis', 'Para empezar']].map(([num, label]) => (
-                <div key={label}>
-                  <p style={{ fontFamily: 'var(--font-display)', fontSize: '1.4rem', fontWeight: 700, color: 'var(--blue-200)' }}>{num}</p>
-                  <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '2px' }}>{label}</p>
+              {[
+                { num: '22+', label: 'Programas', icon: 'inventory_2' },
+                { num: '100%', label: 'Con instrucciones', icon: 'checklist' },
+                { num: 'Gratis', label: 'Para empezar', icon: 'card_giftcard' },
+              ].map(({ num, label, icon }) => (
+                <div key={label} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.6rem' }}>
+                  <Icon name={icon} size={20} fill={0} weight={300} color="var(--blue-300)" style={{ marginTop: '2px' }} />
+                  <div>
+                    <p style={{ fontFamily: 'var(--font-display)', fontSize: '1.3rem', fontWeight: 700, color: 'var(--blue-200)' }}>{num}</p>
+                    <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginTop: '1px' }}>{label}</p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -56,21 +68,26 @@ export default function Hero({ onNavigate }) {
               <div style={{ position: 'absolute', bottom: '1.25rem', left: '1.25rem', right: '1.25rem' }}>
                 <p style={{ fontSize: '0.72rem', color: 'var(--text-muted)', marginBottom: '4px' }}>Más descargado</p>
                 <p style={{ fontFamily: 'var(--font-display)', fontWeight: 700 }}>Adobe Photoshop 2025</p>
-                <p style={{ fontSize: '0.82rem', color: '#42a5f5', fontWeight: 500, marginTop: '4px' }}>Con instrucciones incluidas</p>
+                <p style={{ fontSize: '0.82rem', color: '#42a5f5', fontWeight: 500, marginTop: '4px', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                  <Icon name="description" size={14} fill={0} weight={300} color="#42a5f5" />
+                  Con instrucciones incluidas
+                </p>
               </div>
             </div>
-            <div className="glass" style={{ position: 'absolute', bottom: '20px', left: '0', padding: '0.85rem 1.1rem', borderRadius: '14px', width: '190px' }}>
-              <p style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>Registro gratuito</p>
-              <p style={{ fontWeight: 600, fontSize: '0.88rem', marginTop: '2px' }}>Accede a todo el catálogo</p>
+            <div className="glass" style={{ position: 'absolute', bottom: '20px', left: '0', padding: '0.85rem 1.1rem', borderRadius: '14px', width: '200px', display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+              <Icon name="how_to_reg" size={20} fill={0} weight={300} color="var(--blue-300)" />
+              <div>
+                <p style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>Registro gratuito</p>
+                <p style={{ fontWeight: 600, fontSize: '0.85rem', marginTop: '1px' }}>Accede a todo</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       <style>{`
-        .hero-grid { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center; }
-        @media(max-width:768px) { .hero-grid{grid-template-columns:1fr;gap:2rem;text-align:center} .hero-grid>div:first-child{display:flex;flex-direction:column;align-items:center} .hero-cards{display:none} }
-        @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+        .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+        @media(max-width:768px){.hero-grid{grid-template-columns:1fr;gap:2rem;text-align:center}.hero-grid>div:first-child{display:flex;flex-direction:column;align-items:center}.hero-cards{display:none}}
       `}</style>
     </section>
   );

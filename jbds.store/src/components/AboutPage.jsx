@@ -1,14 +1,17 @@
+import Icon from './Icon';
+
 export default function AboutPage({ onNavigate }) {
   const values = [
-    { icon: '📋', title: 'Instrucciones claras', desc: 'Cada programa incluye pasos detallados para instalarlo correctamente desde cero.' },
-    { icon: '🔄', title: 'Siempre actualizado', desc: 'Mantenemos el catálogo con las versiones más recientes disponibles.' },
-    { icon: '🆓', title: 'Gratis para empezar', desc: 'Accede a decenas de programas gratuitos sin necesidad de registrarte.' },
-    { icon: '🔒', title: 'Privacidad', desc: 'No rastreamos tus descargas ni vendemos tu información a terceros.' },
+    { icon: 'list_alt',       title: 'Instrucciones claras',   desc: 'Cada programa incluye pasos detallados para instalarlo correctamente desde cero.' },
+    { icon: 'autorenew',      title: 'Siempre actualizado',     desc: 'Mantenemos el catálogo con las versiones más recientes disponibles.' },
+    { icon: 'volunteer_activism', title: 'Gratis para empezar',  desc: 'Accede a decenas de programas gratuitos sin necesidad de registrarte.' },
+    { icon: 'shield',         title: 'Privacidad',              desc: 'No rastreamos tus descargas ni vendemos tu información a terceros.' },
   ];
 
   return (
     <div style={{ paddingTop: '80px', minHeight: '100vh' }}>
       <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '3rem 1.5rem' }}>
+
         <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
           <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '0.75rem' }}>Quiénes somos</p>
           <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem,4vw,3rem)', fontWeight: 800, letterSpacing: '-0.02em', marginBottom: '1.25rem' }}>
@@ -24,7 +27,9 @@ export default function AboutPage({ onNavigate }) {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(220px,1fr))', gap: '1.25rem', marginBottom: '4rem' }}>
           {values.map(v => (
             <div key={v.title} className="glass-card" style={{ padding: '1.5rem' }}>
-              <div style={{ fontSize: '2rem', marginBottom: '0.75rem' }}>{v.icon}</div>
+              <div style={{ width: '48px', height: '48px', borderRadius: '14px', background: 'rgba(21,101,192,0.15)', border: '1px solid rgba(66,165,245,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem' }}>
+                <Icon name={v.icon} size={24} fill={0} weight={300} color="var(--blue-300)" />
+              </div>
               <h3 style={{ fontFamily: 'var(--font-display)', fontWeight: 700, marginBottom: '0.5rem' }}>{v.title}</h3>
               <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>{v.desc}</p>
             </div>
@@ -35,8 +40,16 @@ export default function AboutPage({ onNavigate }) {
           <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '1.5rem', marginBottom: '0.75rem' }}>¿Listo para descargar?</h2>
           <p style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem' }}>Regístrate gratis y accede a todo el catálogo.</p>
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <button onClick={() => onNavigate('catalog')} style={{ padding: '0.85rem 2rem', borderRadius: '14px', border: 'none', background: 'linear-gradient(135deg,#1565c0,#1e88e5)', color: 'white', fontWeight: 600, cursor: 'pointer', fontFamily: 'var(--font-body)' }}>Ver catálogo</button>
-            <button onClick={() => onNavigate('contact')} style={{ padding: '0.85rem 2rem', borderRadius: '14px', border: '1px solid rgba(66,165,245,0.3)', background: 'transparent', color: 'var(--blue-100)', fontWeight: 500, cursor: 'pointer', fontFamily: 'var(--font-body)' }}>Contáctanos</button>
+            <button onClick={() => onNavigate('catalog')}
+              style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.85rem 2rem', borderRadius: '14px', border: 'none', background: 'linear-gradient(135deg,#1565c0,#1e88e5)', color: 'white', fontWeight: 600, cursor: 'pointer', fontFamily: 'var(--font-body)' }}>
+              <Icon name="apps" size={18} fill={1} weight={400} />
+              Ver catálogo
+            </button>
+            <button onClick={() => onNavigate('contact')}
+              style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.85rem 2rem', borderRadius: '14px', border: '1px solid rgba(66,165,245,0.3)', background: 'transparent', color: 'var(--blue-100)', fontWeight: 500, cursor: 'pointer', fontFamily: 'var(--font-body)' }}>
+              <Icon name="mail" size={18} fill={0} weight={300} />
+              Contáctanos
+            </button>
           </div>
         </div>
       </div>
